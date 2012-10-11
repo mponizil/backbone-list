@@ -1,6 +1,5 @@
 (function($) {
 
-  var View = Quilt.View;
   var Model = Backbone.Model;
   var Collection = Backbone.Collection;
 
@@ -111,6 +110,17 @@
     collection.reset(collection.models.reverse());
     strictEqual(view.views[0].model.id, 2);
     strictEqual(view.views[1].model.id, 1);
+  });
+
+  test('Use child element for view element.', 4, function() {
+    var view = new List({
+      el: '<p><b class="x"></b></p>',
+      collection: collection
+    }).render();
+    strictEqual(view.views.length, 2);
+    ok(view.views[0].$el.is('b.x'));
+    ok(view.views[1].$el.is('b.x'));
+    ok(view.views[0].el !== view.views[1].el);
   });
 
 })(jQuery);

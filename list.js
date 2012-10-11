@@ -14,6 +14,9 @@
         this.view = options.view;
       }
 
+      this.$viewEl = this.$el.children(':first');
+      this.$el.empty();
+
       this.collection
         .on('add', this.add, this)
         .on('remove', this.remove, this)
@@ -45,7 +48,10 @@
     add: function(model) {
       if (this.findView(model)) return;
 
-      var view = new this.view({model: model});
+      var view = new this.view({
+        model: model,
+        el: this.$viewEl.length ? this.$viewEl.clone() : null
+      });
 
       // Add the view to the cache.
       this._views[model.cid] = this._views[view.cid] = view;
