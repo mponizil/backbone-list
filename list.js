@@ -68,14 +68,14 @@
       else this.$el.prepend(view.el);
     },
 
-    // Destroy the removed model's view and remove it from the DOM.
+    // Dispose of the removed model's view and remove it from the DOM.
     remove: function(model) {
       var view = this.findView(model);
       if (!view) return;
 
-      // Remove from the DOM and destroy.
+      // Remove from the DOM and dispose.
       view.$el.remove();
-      view.destroy();
+      view.dispose();
 
       // Clean up.
       delete this._views[model.cid];

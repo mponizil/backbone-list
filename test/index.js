@@ -75,7 +75,7 @@
   test('Remove a model.', 5, function() {
     var view = new List({collection: collection}).render();
     var child = view.findView(1);
-    child.destroy = function() { ok(true); };
+    child.dispose = function() { ok(true); };
 
     var model = collection.at(0);
     collection.remove(model);
