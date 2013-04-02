@@ -14,7 +14,8 @@
         this.view = options.view;
       }
 
-      this.$viewEl = this.$el.children(':first');
+      var child = this.$el.children(':first')[0];
+      this.viewHtml = child ? child.outerHTML : null;
       this.$el.empty();
 
       this.collection
@@ -50,7 +51,7 @@
 
       var view = new this.view({
         model: model,
-        el: this.$viewEl.length ? this.$viewEl.clone() : null
+        el: this.viewHtml
       });
 
       // Add the view to the cache.

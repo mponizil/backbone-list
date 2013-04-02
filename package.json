@@ -1,0 +1,11 @@
+{
+  "name": "list",
+  "version": "0.0.0",
+  "description": "Backbone List",
+  "scripts": {
+    "test": "phantomjs test/vendor/runner.js test/index.html?noglobals=true"
+  },
+  "devDependencies": {
+    "phantomjs": "1.8.1-3"
+  }
+}
