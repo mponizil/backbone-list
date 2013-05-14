@@ -123,16 +123,4 @@
     ok(view.views[0].el !== view.views[1].el);
   });
 
-  test('Proxy events', 1, function() {
-    var view = new List({
-      collection: collection
-    }).render();
-    view.on('proxy', function(){ ok(true); });
-    view.on('dont', function(){ ok(false); });
-    var child = view.views[0];
-    child.trigger('proxy');
-    collection.remove(collection.at(0));
-    child.trigger('dont');
-  });
-
 })(jQuery);

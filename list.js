@@ -61,9 +61,6 @@
       var index = this.collection.indexOf(model);
       this.views.splice(index, 0, view);
 
-      // Proxy events
-      view.on('all', this.onViewEvent, this);
-
       view.render();
 
       // Insert the view into the DOM.
@@ -81,9 +78,6 @@
       view.$el.remove();
       view.dispose();
 
-      // Stop proxying events.
-      view.off('all', this.onViewEvent, this);
-
       // Clean up.
       delete this._views[model.cid];
       delete this._views[view.cid];
@@ -98,10 +92,6 @@
       _.each(_.difference(models, this.collection.models), this.remove, this);
       this.views = this.collection.map(this.findView, this);
       this.$el.append(_.pluck(this.views, 'el'));
-    },
-
-    onViewEvent: function() {
-      this.trigger.apply(this, arguments);
     }
 
   });
