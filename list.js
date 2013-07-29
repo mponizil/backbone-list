@@ -8,6 +8,7 @@
     view: Quilt.View,
 
     initialize: function(options) {
+      this.views = [];
       this._views = {};
 
       if (options && options.view) {
