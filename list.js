@@ -19,11 +19,12 @@
       this.viewHtml = child ? child.outerHTML : null;
       this.$el.empty();
 
-      this.collection
-        .on('add', this.add, this)
-        .on('remove', this.remove, this)
-        .on('reset', this.reset, this)
-        .on('change:id', this.changeId, this);
+      this.listenTo(this.collection, {
+        add: this.add,
+        remove: this.remove,
+        reset: this.reset,
+        'change:id': this.changeId
+      });
     },
 
     // Find a view by (c)id.
