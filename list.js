@@ -1,4 +1,7 @@
-(function() {
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) define('list', ['underscore', 'quilt'], factory);
+  else root.List = factory(_, Quilt);
+}(this, function(_, Quilt) {
 
   // # List
   // Render views for a list of models.
@@ -98,4 +101,4 @@
 
   });
 
-})();
+}));
